@@ -17,3 +17,6 @@
 
 library(orthGS)
 
+
+a <- read.csv(file = "https://raw.githubusercontent.com/jcaledo/Phylogeny-of-plant-GS/main/Data/AngGym.csv?token=GHSAT0AAAAAACVGKJR6DUB6F4XN7NNYVDBAZU76OQQ")
+
