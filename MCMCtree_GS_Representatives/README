@@ -1,4 +1,4 @@
-In the terminal browse to the corresponding MCMCx and type mcmctree representatives_mcmcx.ctl 
+In the terminal, browse to the corresponding MCMCx and type mcmctree representatives_mcmcx.ctl 
 (x must be changed for the corresponding number from 1 to 8)
 
 MCMC1: rgene_gamma = 2 400 1 * 0.005 substitution/site/100 Mya
