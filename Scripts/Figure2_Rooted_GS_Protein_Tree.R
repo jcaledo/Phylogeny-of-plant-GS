@@ -1,6 +1,9 @@
 ## -------------------------------------------------- ##
 ## ---     Figure 2 (Rooted GS Protein Tree)      --- ##
 ## -------------------------------------------------- ##
+# Next we assume to be running this script from:
+"[wherever_you_place_it]/Phylogeny_of_plant_GS/Scripts"
+
 # Make sure you have installed the following R packages:
 
 # orthGS
@@ -15,7 +18,7 @@
 
 data <- orthGS::AngGym
 
-a <- orthGS::msa(sequences = data$prot, 
+a <- orthGS::msa(sequences = data$prot,
                  ids = data$phylo_id)$ali
 rownames(a) <- data$phylo_id
 tr <- orthGS::mltree(a)$tree # unrooted tree
