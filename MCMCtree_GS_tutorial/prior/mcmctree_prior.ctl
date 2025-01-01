@@ -11,6 +11,8 @@
                            * 2: approximate likelihood; 3:out.BV (in.BV)
          clock = 2         * 1: global clock; 2: independent rates; 3: correlated rates
 
+         RootAge = '<8.0'
+
          BDparas = 1 1 0   * birth, death, sampling
      kappa_gamma = 6 2     * gamma prior for kappa
      alpha_gamma = 1 1     * gamma prior for alpha

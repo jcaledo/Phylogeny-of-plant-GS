@@ -1,15 +1,17 @@
           seed = -1       
 
-       seqfile = ../data/representatives.phy
-      treefile = ../data/representatives.tre
+       seqfile = ../data/representatives7.phy
+      treefile = ../data/representatives7.tre
       mcmcfile = mcmc6.txt
        outfile = out6.txt
 
          ndata = 1
        seqtype = 2                 * 0: nucleotides; 1:codons; 2:AAs
-       usedata = 2 ../in.BV        * 0: no data (prior); 1:exact likelihood;
+       usedata = 2 ../MCMC6/in.BV  * 0: no data (prior); 1:exact likelihood;
                                    * 2: approximate likelihood; 3:out.BV (in.BV)
          clock = 2                 * 1: global clock; 2: independent rates; 3: correlated rates
+
+         RootAge =  '<6.0'
 
          BDparas = 1 1 0           * birth, death, sampling
      kappa_gamma = 6 2             * gamma prior for kappa

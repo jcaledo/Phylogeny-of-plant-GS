@@ -1,7 +1,7 @@
 ---
 title: "MCMCtree: GS tutorial"
 author: "Juan Carlos Aledo"
-date: "2024-06-26"
+date: "2024-12-17"
 output: pdf_document
 ---
 
@@ -32,9 +32,9 @@ This tutorial is for my own use. However, I am making it public in case it would
 
 ## Input Data
 
-* An alignment in phylip format (MCMCtree_GS_tutorial/data/representatives.phy) of 20 GS plant proteins from six representative plant species.
+* An alignment in phylip format (MCMCtree_GS_tutorial/data/representatives.phy) of 25 GS plant proteins from six representative plant species.
 
-* A calibrated tree of the 20 proteins (MCMCtree_GS_tutorial/data/representatives.tre)
+* A calibrated tree of the 25 proteins (MCMCtree_GS_tutorial/data/representatives.tre)
 
 &nbsp;
 
@@ -97,7 +97,9 @@ In the `MCMCtree_GS_tutorial/MCMC` you will find the control file (`representati
        usedata = 2 ../MCMC/in.BV   * 0: no data (prior); 1:exact likelihood;
                                    * 2: approximate likelihood; 3:out.BV (in.BV)
          clock = 2                 * 1: global clock; 2: independent rates; 3: correlated rates
-
+         
+         RootAge =  '<8.0'
+         
          BDparas = 1 1 0           * birth, death, sampling
      kappa_gamma = 6 2             * gamma prior for kappa
      alpha_gamma = 1 1             * gamma prior for alpha
@@ -174,10 +176,10 @@ As we can see, the posterior means are similar between the two MCMC runs, which 
 
 ```{r}
 par(mfrow = c(1,2))
-root <- which(names(pos1) == "t_n21")
+root <- which(names(pos1) == "t_n26")
 plot(density(pos1[,root]), col = "blue", lty = 2, main = "Density GS2/GS1 age")
 lines(density(pos2[,root]), col = "red", lty = 2)
-gs1ab <- which(names(pos1) == "t_n22")
+gs1ab <- which(names(pos1) == "t_n27")
 plot(density(pos1[,gs1ab]), col = "blue", lty = 2, main = "Density GS1a/GS1b age")
 lines(density(pos2[,gs1ab]), col = "red", lty = 2)
 par(mfrow = c(1,1))
@@ -230,6 +232,8 @@ In a phylogeny, nodes must be older than their daughter nodes. This constraint m
        usedata = 0         * 0: no data (prior); 1:exact likelihood;
                            * 2: approximate likelihood; 3:out.BV (in.BV)
          clock = 2         * 1: global clock; 2: independent rates; 3: correlated rates
+         
+         RootAge = '<8.0'
 
          BDparas = 1 1 0   * birth, death, sampling
      kappa_gamma = 6 2     * gamma prior for kappa
@@ -244,27 +248,7 @@ In a phylogeny, nodes must be older than their daughter nodes. This constraint m
          nsample = 20000
 ```
 
-Note that `usedata = 0`tells MCMCtree to carry out sampling from the prior. Now, in the terminal browse to `MCMCtree_GS_tutorial/wb` and type: `mcmctree ../prior/representatives_prior.ctl`. Once MCMCtree has finished, the output files `mcmc_prior.txt`, `out_prior.txt`, and `FigTree_prior.tre`, which in this case contain the prior sample and prior summaries. We have move these files to the `MCMCtree_GS_tutorial/output` directory and they will be used to plot the calibration densities and the marginal prior.
-
-```{r}
-# Install the mcmc3r package if necessary:
-if (!any(rownames(installed.packages()) == "mcmc3r")) install.packages("v")
-library(mcmc3r, quietly = TRUE, warn.conflicts = FALSE)
-
-prior <- read.csv2("./output/mcmc_prior.txt", sep = "\t", header = TRUE)
-prior <- as.data.frame(sapply(prior, as.numeric))
-
-# Plot prior root age (GS2/GS1):
-plot(density(prior[,root]), lty = 2, main = "Prior root age") 
-curve(mcmc3r::dB(x, 4.16, 10.42, 0.025, 0.025), n = 5e2, add = TRUE)
-
-# Plot prior GS1a divergency:
-gs1a <- which(names(pos1) == "t_n34")
-plot(density(prior[,gs1a]), lty = 2, main = "Prior GS1a-divergence node age")  
-curve(mcmc3r::dB(x, 3.062, 3.668, 0.025, 0.025), n = 5e2, add = TRUE)
-```
-
-As it can be appreciated, the marginal prior age (dashed lines) of both nodes are similar to their corresponding calibration densities (solid lines).
+Note that `usedata = 0`tells MCMCtree to carry out sampling from the prior. Now, in the terminal browse to `MCMCtree_GS_tutorial/wb` and type: `mcmctree ../prior/representatives_prior.ctl`. Once MCMCtree has finished, you will see the output files `mcmc_prior.txt`, `out_prior.txt`, and `FigTree_prior.tre`, which in this case contain the prior sample and prior summaries, and can be used to plot the calibration densities and the marginal prior.
 
 ## References 
 
