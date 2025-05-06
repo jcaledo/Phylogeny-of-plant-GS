@@ -1,5 +1,5 @@
 ## --------------------------------------------------- ##
-## --- Figure 5 (Dating GS evolution in seed plants) - ##
+## --- Figure 6 (Dating GS evolution in seed plants) - ##
 ## --------------------------------------------------- ##
 # Next we assume to be running this script from:
 "[wherever_you_place_it]/Phylogeny_of_plant_GS/Scripts"
