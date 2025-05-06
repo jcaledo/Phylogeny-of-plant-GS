@@ -1,5 +1,5 @@
 ## -------------------------------------------------- ##
-## ---   Figure 3 (Rooted Representative Trees)   --- ##
+## ---   Figure 4 (Rooted Representative Trees)   --- ##
 ## -------------------------------------------------- ##
 # Next we assume to be running this script from:
 "[wherever_you_place_it]/Phylogeny_of_plant_GS/Scripts"
