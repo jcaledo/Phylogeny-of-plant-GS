@@ -1,5 +1,5 @@
 ## --------------------------------------------------- ##
-## ---     Figure 6 (Trees Reconciliations)        --- ##
+## ---     Figure 7 (Trees Reconciliations)        --- ##
 ## --------------------------------------------------- ##
 # Reconciliation Conifers
 library(orthGS)
