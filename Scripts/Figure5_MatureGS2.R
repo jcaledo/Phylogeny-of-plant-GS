@@ -1,5 +1,5 @@
 ## -------------------------------------------------- ##
-## ---   Figure 4 (Preprotein vs Mature GS2)      --- ##
+## ---   Figure 5 (Preprotein vs Mature GS2)      --- ##
 ## -------------------------------------------------- ##
 # Next we assume to be running this script from:
 "[wherever_you_place_it]/Phylogeny_of_plant_GS/Scripts"
